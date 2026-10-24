@@ -1,46 +1,21 @@
 package com.pikapika.view;
 
-import com.pikapika.utils.Utils;
+import com.pikapika.utils.MusicPlayer;
+import java.awt.Font;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
+import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
 import java.util.Random;
 
-/**
- * Created by anonymousjp on 5/19/17.
- */
-public class SplashView extends JpanelBackground implements PropertyChangeListener{
-    /**
-     *
-     */
+public class SplashView extends JpanelBackground implements PropertyChangeListener {
     private JProgressBar loadingProgress;
-
-    /**
-     *
-     */
     private JLabel loadingText;
-
-    /**
-     *
-     */
     private OnLoadingListener listener;
-
-    /**
-     *
-     */
     private GroupLayout layout;
-
-    /**
-     *
-     */
     private Task loadingTask;
+    private MusicPlayer musicPlayer; // Thêm biến để phát nhạc
 
     public SplashView(String background) {
         super(background);
@@ -49,49 +24,47 @@ public class SplashView extends JpanelBackground implements PropertyChangeListen
         setLayout(layout);
         initUI();
         setVisible(false);
+        musicPlayer = new MusicPlayer(); // Khởi tạo nhạc nền
     }
 
-    private void initUI(){
-        loadingProgress = new JProgressBar(0,100);
+    private void initUI() {
+        loadingProgress = new JProgressBar(0, 100);
         loadingProgress.setValue(0);
+        loadingProgress.setPreferredSize(new java.awt.Dimension(400, 20));
 
         loadingText = new JLabel("Loading...");
-        loadingText.setFont(new java.awt.Font("Shree Devanagari 714", 0, 15));
+        loadingText.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
         loadingText.setHorizontalAlignment(SwingConstants.CENTER);
+        loadingText.setForeground(java.awt.Color.BLACK);
 
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addGroup(layout.createSequentialGroup()
-                      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addGroup(layout.createSequentialGroup()
-                      .addGap(193, 193, 193)
-                      .addComponent(loadingProgress, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE))
-                      .addGroup(layout.createSequentialGroup()
-                      .addGap(327, 327, 327)
-                      .addComponent(loadingText)))
-                      .addContainerGap(203, Short.MAX_VALUE))
-        );
+        // ĐÃ SỬA: Đưa thanh loading ra giữa và nâng bottom lề dưới lên 280
+        this.setLayout(new java.awt.BorderLayout());
+        
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new java.awt.GridBagLayout());
+        bottomPanel.setOpaque(false);
+        bottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 120, 0)); 
 
-        layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                      .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                      .addContainerGap(340, Short.MAX_VALUE)
-                      .addComponent(loadingProgress, GroupLayout.PREFERRED_SIZE, 8, GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addComponent(loadingText)
-                      .addGap(80, 80, 80))
-        );
+        java.awt.GridBagConstraints gbc = new java.awt.GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new java.awt.Insets(0, 0, 10, 0); 
+        bottomPanel.add(loadingProgress, gbc);
+
+        gbc.gridy = 1;
+        bottomPanel.add(loadingText, gbc);
+
+        this.add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
         loadingTask = new Task();
         loadingTask.addPropertyChangeListener(this);
     }
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("progress" == evt.getPropertyName()) {
+        if ("progress".equals(evt.getPropertyName())) {
             int prog = (Integer) evt.getNewValue();
             loadingProgress.setValue(prog);
-            if (listener!=null){
+            if (listener != null) {
                 listener.onLoading();
             }
         }
@@ -101,15 +74,15 @@ public class SplashView extends JpanelBackground implements PropertyChangeListen
         this.listener = listener;
     }
 
-    public void start(){
+    public void start() {
         setVisible(true);
         loadingTask.execute();
-        if (listener!=null){
+        if (listener != null) {
             listener.onStartLoading();
         }
     }
 
-    public interface OnLoadingListener{
+    public interface OnLoadingListener {
         void onStartLoading();
         void onLoading();
         void onStopLoading();
@@ -123,9 +96,9 @@ public class SplashView extends JpanelBackground implements PropertyChangeListen
             setProgress(0);
             while (progress < 100) {
                 try {
-                    Thread.sleep(random.nextInt(1000));
+                    Thread.sleep(random.nextInt(300) + 100); // loading ngẫu nhiên
                 } catch (InterruptedException ignore) {}
-                progress += random.nextInt(10);
+                progress += random.nextInt(10) + 5;
                 setProgress(Math.min(progress, 100));
             }
             return null;
@@ -134,9 +107,11 @@ public class SplashView extends JpanelBackground implements PropertyChangeListen
         @Override
         public void done() {
             setCursor(null);
-            if (listener!=null){
+            if (listener != null) {
                 listener.onStopLoading();
             }
+
+          
         }
     }
 }

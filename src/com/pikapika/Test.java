@@ -1,7 +1,7 @@
 package com.pikapika;
 
 /**
- * Created by anonymousjp on 5/20/17.
+ * 
  */
 
 import com.pikapika.view.JpanelBackground;

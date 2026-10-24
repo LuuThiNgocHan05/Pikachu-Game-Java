@@ -1,11 +1,11 @@
 package com.pikapika.utils;
 
 /**
- * Created by anonymousjp on 5/20/17.
+ * 
  */
 public class Utils {
-    public static final int WINDOW_WIDTH = 720;
-    public static final int WINDOW_HEIGHT = 460;
+    public static final int WINDOW_WIDTH = 920;
+    public static final int WINDOW_HEIGHT = 600;
     public static final String DEFAULT_FONT = "Shree Devanagari 714";
     public static final String BT_EASY = "Easy";
     public static final String BT_MEDIUM = "Medium";
@@ -21,6 +21,7 @@ public class Utils {
     public static final int MAP_COL = 12;
     public static final int PIKACHU_NUMBER = 34;
     public static final boolean DEBUG = true;
+    public static final String BT_HINT = "HINT";
 
     public static void debug(Class clz,String debug){
         if (DEBUG){

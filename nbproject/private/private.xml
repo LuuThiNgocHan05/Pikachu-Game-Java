@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/sounds/GameOver.wav</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/GameOverView.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/JpanelBackground.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/MenuView.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/PauseMenuView.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/Pikachu.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/Main.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/Test.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/control/GameController.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/control/Matrix.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/resources/pika_icon.png</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/utils/MusicPlayer.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/utils/SoundEffectPlayer.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/utils/Utils.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/PlayGameView.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/SplashView.java</file>
+            <file>file:/C:/Users/ASUS/Downloads/Pika/Pika/Pika/src/com/pikapika/view/WinGameView.java</file>
+        </group>
     </open-files>
 </project-private>
